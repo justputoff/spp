@@ -13,6 +13,7 @@
         <thead>
           <tr class="text-nowrap table-dark">
             <th class="text-white">No</th>
+            <th class="text-white">ID</th>
             <th class="text-white">Nama Siswa</th>
             <th class="text-white">Nama Wali</th>
             <th class="text-white">Email Wali</th>
@@ -27,6 +28,7 @@
           @foreach ($fees as $fee)
           <tr>
             <th scope="row">{{ $loop->iteration }}</th>
+            <td>{{ $fee->id }}</td>
             <td>{{ $fee->student->name }}</td>
             <td>{{ $fee->student->studentParent->name }}</td>
             <td>{{ $fee->student->studentParent->user->email }}</td>
@@ -34,7 +36,7 @@
             <td>{{ number_format($fee->price, 0, ',', '.') }}</td>
             <td>{{ $fee->bulan }}</td>
             <td>{{ $fee->status }}</td>
-            @if ($fee->status == 'BELUM LUNAS' && Auth::user()->role == 'PARENT')
+            @if ($fee->status == 'BELUM BAYAR' && Auth::user()->role == 'PARENT')
             <td>
               <form action="{{ route('transaction.store', $fee->id) }}" enctype="multipart/form-data" method="POST">
                 @csrf

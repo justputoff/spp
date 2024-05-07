@@ -15,10 +15,14 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::with(['studentParent', 'sppStudent', 'taStudent', 'grade'])->get();
-        return ResponseFormatter::success(
-           dd($students),
-            'Success'
-        );
+        return response()->json([
+            'data' => $students,
+            'meta' => [
+                'code' => 200,
+                'status' => 'success',
+                'message' => 'data berhasil di ambil'
+            ],
+        ]);
     }
 
     /**
