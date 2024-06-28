@@ -14,8 +14,9 @@ class TransactionController extends Controller
         $data = Transaction::all();
         return response()->json([
             'data' => $data,
+            'code' => 200,
             'message' => 'success',
-        ]);
+        ], 200);
     }
 
     public function store(Request $request, $id){
@@ -32,7 +33,7 @@ class TransactionController extends Controller
                 'code' => 200,
             ],
             'data' => $transactions
-        ]);
+        ], 200);
     }
 
     public function cancel($id){
@@ -41,7 +42,8 @@ class TransactionController extends Controller
             'status' => 'CANCEL',
         ]);
         return response()->json([
-            'data' => $item
-        ]);
+            'data' => $item,
+            'code' => 200
+        ], 200);
     }
 }

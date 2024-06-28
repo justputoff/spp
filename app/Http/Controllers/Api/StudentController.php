@@ -22,7 +22,7 @@ class StudentController extends Controller
                 'status' => 'success',
                 'message' => 'data berhasil di ambil'
             ],
-        ]);
+        ], 200);
     }
 
     /**

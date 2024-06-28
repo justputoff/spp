@@ -63,10 +63,35 @@
         .dt-input{
           margin-right: 15px !important;
         }
+        .alert {
+        position: fixed;
+        top: 50px;
+        right: 50%;
+        transform: translateX(50%);
+        width: max-content;
+        z-index: 9999;
+        padding: 1rem 1.5rem;
+        border-radius: 0.375rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      }
+      .alert .btn-close {
+        margin-left: 20px; /* Tambahkan margin kiri */
+      }
       </style>
   </head>
 
   <body>
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-dismissible fade show text-center" id="alert" role="alert">
+      <h5 class="text-black">{{ $message }}</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @elseif ($message = Session::get('error'))
+    <div class="alert alert-danger alert-dismissible fade show text-center" id="alert" role="alert">
+      <h5 class="text-black">{{ $message }}</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
@@ -116,9 +141,6 @@
 
     <!-- Page JS -->
     <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
-    <script>
-      $(".selectpicker").selectpicker();
-    </script>
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     @if (Route::is('report.index'))

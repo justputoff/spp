@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\Hash;
 
 class ParentSeeder extends Seeder
 {
@@ -28,7 +29,7 @@ class ParentSeeder extends Seeder
             $user = User::create([
                 'name' => $parentName,
                 'email' => fake()->unique()->safeEmail(),
-                'password' => bcrypt('password123'), // Atur password yang sesuai
+                'password' => Hash::make('password'), // Atur password yang sesuai
                 'role' => 'PARENT',
             ]);
 

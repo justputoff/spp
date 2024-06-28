@@ -18,7 +18,7 @@ class UserController extends Controller
         return response()->json([
            'data' => $request->user(),
            'message' => 'Data profile user berhasil diambil'
-        ]);
+        ], 200);
     }
 
     public function login(Request $request)
@@ -55,7 +55,7 @@ class UserController extends Controller
                     'code' => 200,
                     'message' => 'Authenticated'
                 ]
-            ]);
+            ], 200);
             
             // return ResponseFormatter::success([
             //     'access_token' => $tokenResult,
@@ -68,7 +68,7 @@ class UserController extends Controller
                 'error' => $error,
                 'status' => 'Authentication Failed',
                 'code' => 500,
-            ]);
+            ], 500);
         }
     }
 
@@ -102,7 +102,7 @@ class UserController extends Controller
                 'token_type' => 'Bearer',
                 'user' => $user,
                 'status' => 'User Registered',
-            ]);
+            ], 200);
 
             // return ResponseFormatter::success([
             //     'access_token' => $tokenResult,
@@ -115,7 +115,7 @@ class UserController extends Controller
                 'error' => $error,
                 'status' => 'Authentication Failed',
                 'code' => 500
-            ]);
+            ], 500);
 
             // return ResponseFormatter::error([
             //     'message' => 'Something went wrong',
@@ -139,7 +139,7 @@ class UserController extends Controller
             'token_type' => 'Bearer',
             'user' => $user,
             'message' => 'success',
-        ]);
+        ], 200);
         // return ResponseFormatter::success([
         //     'access_token' => $tokenResult,
         //     'token_type' => 'Bearer',

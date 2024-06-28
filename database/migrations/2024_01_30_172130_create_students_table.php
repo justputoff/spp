@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('student_parent_id');
             $table->foreignId('ta_student_id');
             $table->string('name');
-            $table->double('discount')->nullable();
+            $table->integer('discount')->nullable();
             $table->string('nis');
             $table->string('nisn');
             $table->string('nik');

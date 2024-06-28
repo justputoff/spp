@@ -57,6 +57,12 @@ class SppController extends Controller
         $bulan = $request->bulan;
         $tahun = $request->tahun;
 
+        // Validasi jika data dengan bulan dan tahun yang sama sudah ada
+        $existingData = SppStudent::where('bulan', $bulan)->where('tahun', $tahun)->exists();
+        if ($existingData) {
+            return back()->with('error', 'Data untuk bulan dan tahun ini sudah ada.');
+        }
+
         // Kelompokkan siswa berdasarkan parent mereka (student_parent_id)
         $studentsByParent = $students->groupBy('student_parent_id');
 
@@ -117,6 +123,11 @@ class SppController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = SppStudent::find($id);
+        if ($item) {
+            $item->delete();
+            return back()->with('success', 'Data berhasil dihapus.');
+        }
+        return back()->with('error', 'Data tidak ditemukan.');
     }
 }
