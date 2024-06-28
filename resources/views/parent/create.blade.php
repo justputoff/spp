@@ -29,6 +29,8 @@
               @foreach ($data as $item)
               @if ($item->studentParent == null)
               <option value="{{ $item->id }}">{{ $item->name }}</option>
+              @else
+              <option value="">Tidak ada data</option>
               @endif
               @endforeach
             </select>
