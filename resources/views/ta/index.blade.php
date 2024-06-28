@@ -12,7 +12,7 @@
       <div class="row mb-3">
         <label class="col-sm-2 col-form-label" for="basic-default-name">Nama</label>
         <div class="col-sm-10">
-          <input type="text" name="name" class="form-control" id="basic-default-name" placeholder="" />
+          <input type="number" name="name" class="form-control" id="basic-default-name" placeholder="" />
         </div>
       </div>
       <div class="row justify-content-end">
