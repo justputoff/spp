@@ -26,11 +26,10 @@
           <label for="exampleFormControlSelect1" class="form-label col-sm-2">User</label>
           <div class="col-sm-10">
             <select class="form-select" name="user_id" id="exampleFormControlSelect1" aria-label="Default select example">
+              <option value="">Select Data</option>
               @foreach ($data as $item)
               @if ($item->studentParent == null)
               <option value="{{ $item->id }}">{{ $item->name }}</option>
-              @else
-              <option value="">Tidak ada data</option>
               @endif
               @endforeach
             </select>
