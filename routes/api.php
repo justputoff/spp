@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\StudentController;
-use App\Http\Controllers\API\TransactionController;
-use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\Api\TransactionController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
