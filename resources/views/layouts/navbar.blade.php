@@ -91,7 +91,7 @@
               <li class="menu-item">
                 <a href="{{ route('ta.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-calendar"></i>
-                  <div data-i18n="Analytics">Ta Siswa</div>
+                  <div data-i18n="Analytics">Tahun Ajaran Siswa</div>
                 </a>
               </li>
               <li class="menu-item">
