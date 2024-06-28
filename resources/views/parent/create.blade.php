@@ -27,7 +27,9 @@
           <div class="col-sm-10">
             <select class="form-select" name="user_id" id="exampleFormControlSelect1" aria-label="Default select example">
               @foreach ($data as $item)
+              @if ($item->studentParent == null)
               <option value="{{ $item->id }}">{{ $item->name }}</option>
+              @endif
               @endforeach
             </select>
           </div>
