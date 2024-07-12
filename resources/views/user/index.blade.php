@@ -6,7 +6,7 @@
 
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">
-    <h5 class="card-header">Table User <a href="{{ route('user.create') }}" class="btn btn-sm btn-success">Tambah User</a></h5>
+    <h5 class="card-header">Accounts <a href="{{ route('user.create') }}" class="btn btn-sm btn-success">Tambah</a></h5>
     <div class="table-responsive text-nowrap p-3">
       <table class="table" id="example">
         <thead>
