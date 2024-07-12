@@ -11,7 +11,11 @@ class TransactionController extends Controller
 {
 
     public function index(){
-        $data = Transaction::all();
+        if(Auth::user()->role == 'ADMIN'){
+            $data = Transaction::all();
+        }else{
+            $data = Transaction::where('user_id', Auth::user()->id)->get();
+        }
         return response()->json([
             'data' => $data,
             'code' => 200,
