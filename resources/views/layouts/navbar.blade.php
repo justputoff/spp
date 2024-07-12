@@ -124,6 +124,18 @@
                   <div data-i18n="Analytics">Transactions</div>
                 </a>
               </li>
+              <li class="menu-item {{ Route::is('fees*') ? 'active' : '' }}">
+                <a href="{{ route('fees.index') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bxs-wallet"></i>
+                  <div data-i18n="Analytics">Fee</div>
+                </a>
+              </li>
+              <li class="menu-item {{ Route::is('payments*') ? 'active' : '' }}">
+                <a href="{{ route('payments.index') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bxs-wallet"></i>
+                  <div data-i18n="Analytics">Payment</div>
+                </a>
+              </li>
               <li class="menu-item {{ Route::is('report*') ? 'active' : '' }}">
                 <a href="{{ route('report.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-report"></i>

@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FeeController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\ParentController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SppController;
@@ -76,9 +78,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('spp/destroy/{id}', [SppController::class, 'destroy'])->name('spp.destroy');
     //MASTER SPP
     Route::get('spp/student/index', [StudentFeeController::class, 'index'])->name('spp/student.index');
-    // Route::get('spp/student/create', [StudentFeeController::class, 'create'])->name('spp/student.create');
-    Route::get('spp/student/edit/{id}', [StudentFeeController::class, 'edit'])->name('spp/student.edit');
-    Route::put('spp/student/update/{id}', [StudentFeeController::class, 'update'])->name('spp/student.update');
     Route::post('spp/student/store', [StudentFeeController::class, 'store'])->name('spp/student.store');
     Route::delete('spp/student/destroy/{id}', [StudentFeeController::class, 'destroy'])->name('spp/student.destroy');
     //Transaction
@@ -88,6 +87,24 @@ Route::middleware('auth')->group(function () {
     Route::post('transaction/store/{id}', [TransactionController::class, 'store'])->name('transaction.store');
     Route::put('transaction/update/{id}', [TransactionController::class, 'update'])->name('transaction.update');
     Route::delete('transaction/destroy/{id}', [TransactionController::class, 'destroy'])->name('transaction.destroy');
+    //Fee
+    Route::get('fee/index', [FeeController::class, 'index'])->name('fees.index');
+    Route::post('fee/store', [FeeController::class, 'store'])->name('fees.store');
+    Route::delete('fee/destroy/{id}', [FeeController::class, 'destroy'])->name('fees.destroy');
+    //Payment
+    Route::get('payments/index', [PaymentController::class, 'index'])->name('payments.index');
+    Route::get('payments/create', [PaymentController::class, 'create'])->name('payments.create');
+    Route::get('payments/edit/{payment}', [PaymentController::class, 'edit'])->name('payments.edit');
+    Route::post('payments/store', [PaymentController::class, 'store'])->name('payments.store');
+    Route::put('payments/update/{payment}', [PaymentController::class, 'update'])->name('payments.update');
+    Route::delete('payments/destroy/{payment}', [PaymentController::class, 'destroy'])->name('payments.destroy');
+    //Payment Detail
+    Route::get('payments/details/index/{payment}', [PaymentController::class, 'detailsIndex'])->name('payments.details.index');
+    Route::get('payments/details/create/{payment}', [PaymentController::class, 'detailsCreate'])->name('payments.details.create');
+    Route::post('payments/details/store/{payment}', [PaymentController::class, 'detailsStore'])->name('payments.details.store');
+    Route::get('payments/details/edit/{paymentDetail}', [PaymentController::class, 'detailsEdit'])->name('payments.details.edit');
+    Route::put('payments/details/update/{paymentDetail}', [PaymentController::class, 'detailsUpdate'])->name('payments.details.update');
+    Route::delete('payments/details/destroy/{paymentDetail}', [PaymentController::class, 'detailsDestroy'])->name('payments.details.destroy');
 });
 
 Route::get('/report', [ReportController::class, 'index'])->name('report.index');
