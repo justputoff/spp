@@ -15,7 +15,7 @@ class DashboardController extends Controller
     public function index()
     {
         // Menghitung total kelas dan siswa
-        $totalClasses = Grade::count(); // Ganti dengan model yang sesuai
+        $totalClasses = Grade::count();
         $totalStudents = Student::count();
 
         // Data untuk chart
@@ -30,12 +30,22 @@ class DashboardController extends Controller
      */
     private function getStudentCountsByYear($years)
     {
-        $studentCounts = Student::select(DB::raw('YEAR(created_at) as year'), DB::raw('count(*) as count'))
-            ->whereIn(DB::raw('YEAR(created_at)'), $years)
-            ->groupBy(DB::raw('YEAR(created_at)'))
-            ->orderBy('year')
-            ->pluck('count', 'year')
-            ->toArray();
+        // Menyesuaikan query berdasarkan jenis database
+        if (config('database.default') === 'pgsql') {
+            $studentCounts = Student::selectRaw('EXTRACT(YEAR FROM created_at) as year, COUNT(*) as count')
+                ->whereIn(DB::raw('EXTRACT(YEAR FROM created_at)'), $years)
+                ->groupBy('year')
+                ->orderBy('year')
+                ->pluck('count', 'year')
+                ->toArray();
+        } else {
+            $studentCounts = Student::selectRaw('DATE_FORMAT(created_at, \'%Y\') as year, COUNT(*) as count')
+                ->whereIn(DB::raw('DATE_FORMAT(created_at, \'%Y\')'), $years)
+                ->groupBy('year')
+                ->orderBy('year')
+                ->pluck('count', 'year')
+                ->toArray();
+        }
 
         // Mengisi tahun yang tidak ada dengan nilai 0
         $studentCounts = array_replace(array_fill_keys($years, 0), $studentCounts);
