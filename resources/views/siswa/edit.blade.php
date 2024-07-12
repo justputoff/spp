@@ -36,12 +36,17 @@
           </div>
         </div>
         <div class="row mb-3">
+          <label for="exampleFormControlSelect1" class="form-label col-sm-2">Discount</label>
+          <div class="col-sm-10">
+            <input type="number" name="discount" class="form-control" id="basic-default-name" value="{{ $item->discount }}" placeholder="" />
+          </div>
+        </div>
+        <div class="row mb-3">
           <label for="exampleFormControlSelect1" class="form-label col-sm-2">Parent</label>
           <div class="col-sm-10">
-            <select class="form-select" name="student_parent_id" id="exampleFormControlSelect1" aria-label="Default select example">
-              <option value="{{ $item->studentParent->id }}">{{ $item->studentParent->name }}</option>
+            <select class="form-select" name="student_parent_id" id="select2" aria-label="Default select example">
               @foreach ($parents as $parent)
-              <option value="{{ $parent->id }}">{{ $parent->name }}</option>
+              <option value="{{ $parent->id }}" {{ $item->student_parent_id == $parent->id ? 'selected' : '' }}>{{ $parent->name }}</option>
               @endforeach
             </select>
           </div>

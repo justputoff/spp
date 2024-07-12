@@ -15,6 +15,8 @@ class SppStudent extends Model
         'status',
         'price',
         'tahun',
+        'discount',
+        'grade_id',
         'student_id',
     ];
 

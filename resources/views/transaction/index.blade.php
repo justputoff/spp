@@ -42,7 +42,6 @@
                 @csrf
                 <div class="row">
                   <div class="mb-3 col-7">
-                    {{-- <label for="formFileSm" class="form-label">Bukti TF</label> --}}
                     <input class="form-control form-control-sm mt-3" name="image" id="formFileSm" type="file">
                   </div>
                   <button class="btn btn-sm btn-success col-2 my-auto" type="submit">Submit</button>
@@ -95,8 +94,14 @@
             <td><a href="{{ Storage::url($item->image) }}" target="_blank" class="btn btn-sm btn-primary">Klik</a></td>
             @if (Auth::user()->role == 'ADMIN')
             <td>
+              @if ($item->status == 'PENDING')
               <a href="{{ route('transaction.terima', $item->id) }}" class="btn btn-sm btn-success">Terima</a>
               <a href="{{ route('transaction.tolak', $item->id) }}" class="btn btn-sm btn-danger">Tolak</a>
+              @elseif ($item->status == 'SUKSES')
+              <a href="{{ route('transaction.tolak', $item->id) }}" class="btn btn-sm btn-danger disabled">Tolak</a>
+              @elseif ($item->status == 'DITOLAK')
+              <a href="{{ route('transaction.terima', $item->id) }}" class="btn btn-sm btn-success">Terima</a>
+              @endif
             </td>
             @endif
           </tr>

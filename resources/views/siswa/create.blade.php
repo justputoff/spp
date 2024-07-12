@@ -35,9 +35,15 @@
           </div>
         </div>
         <div class="row mb-3">
-          <label for="exampleFormControlSelect1" class="form-label col-sm-2">Parent</label>
+          <label class="col-sm-2 col-form-label" for="basic-default-name">Discount SPP</label>
           <div class="col-sm-10">
-            <select class="form-select" name="student_parent_id" id="exampleFormControlSelect1" aria-label="Default select example">
+            <input type="number" name="discount" class="form-control" id="basic-default-name" placeholder="" />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="parentSelect" class="form-label col-sm-2">Parent</label>
+          <div class="col-sm-10">
+            <select class="form-select" name="student_parent_id" id="select2" aria-label="Default select example">
               @foreach ($parents as $parent)
               <option value="{{ $parent->id }}">{{ $parent->name }}</option>
               @endforeach
@@ -75,3 +81,19 @@
 </div>
 
 @endsection
+
+@push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#parentSelect').select2({
+      placeholder: "Pilih Parent",
+      allowClear: true
+    });
+  });
+</script>
+@endpush
+
+@push('styles')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+@endpush

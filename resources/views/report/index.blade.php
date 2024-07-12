@@ -6,7 +6,41 @@
 
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card mt-3">
-    <h5 class="card-header">Table SPP</h5>
+    <h5 class="card-header">Laporan</h5>
+    <div class="card-body">
+      <form id="filterForm" method="GET" action="{{ route('report.index') }}">
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="filterBulan" class="form-label">Bulan</label>
+            <select class="form-select" name="bulan" id="filterBulan">
+              <option value="">Pilih Bulan</option>
+              @foreach ($months as $month)
+              <option value="{{ $month }}" {{ request('bulan') == $month ? 'selected' : '' }}>{{ $month }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="filterTahun" class="form-label">Tahun</label>
+            <select class="form-select" name="tahun" id="filterTahun">
+              <option value="">Pilih Tahun</option>
+              @foreach ($years as $year)
+              <option value="{{ $year }}" {{ request('tahun') == $year ? 'selected' : '' }}>{{ $year }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="filterGrade" class="form-label">Grade</label>
+            <select class="form-select" name="grade" id="filterGrade">
+              <option value="">Pilih Grade</option>
+              @foreach ($grades as $grade)
+              <option value="{{ $grade->id }}" {{ request('grade') == $grade->id ? 'selected' : '' }}>{{ $grade->name }}</option>
+              @endforeach
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary">Filter</button>
+      </form>
+    </div>
     <div class="table-responsive text-nowrap p-3">
       <table class="table" id="example">
         <thead>
@@ -45,3 +79,19 @@
 </div>
 <!-- / Content -->
 @endsection
+
+@push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#filterBulan, #filterTahun, #filterGrade').select2({
+      placeholder: "Pilih",
+      allowClear: true
+    });
+  });
+</script>
+@endpush
+
+@push('styles')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+@endpush

@@ -19,6 +19,7 @@
             <th class="text-white">Rombel</th>
             <th class="text-white">Parent</th>
             <th class="text-white">TA</th>
+            <th class="text-white">Discount SPP</th>
             <th class="text-white">Actions</th>
           </tr>
         </thead>
@@ -33,14 +34,14 @@
             <td>{{ $item->grade->name }}</td>
             <td>{{ $item->studentParent->name }}</td>
             <td>{{ $item->taStudent->name }}</td>
+            <td>{{ 'Rp. ' . number_format($item->discount, 0, ',', '.') }}</td>
             <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{{ route('student.edit', $item->id) }}"><i class="bx bx-edit-alt me-1"></i>Edit</a>
-                  <a class="dropdown-item" href="{{ route('student.destroy', $item->id) }}"><i class="bx bx-trash me-1"></i>Delete</a>
-                </div>
-              </div>
+              <a href="{{ route('student.edit', $item->id) }}" class="btn btn-sm btn-warning"><i class="bx bx-edit-alt me-1"></i>Edit</a>
+              <form action="{{ route('student.destroy', $item->id) }}" method="post" style="display: inline-block">
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn btn-sm btn-danger"><i class="bx bx-trash me-1"></i>Delete</button>
+              </form>
             </td>
           </tr>
           @endforeach

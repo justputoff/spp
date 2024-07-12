@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('spp_students', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('student_id');
+            $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
+            $table->foreignId('grade_id')->constrained('grades')->onDelete('cascade');
             $table->string('bulan');
             $table->string('tahun');
-            $table->double('price');
+            $table->integer('price');
+            $table->integer('discount')->nullable();
             $table->date('tanggal')->nullable();
             $table->string('via')->nullable();
             $table->string('status')->default('BELUM BAYAR');

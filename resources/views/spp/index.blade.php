@@ -41,7 +41,9 @@
           <tr class="text-nowrap table-dark">
             <th class="text-white">No</th>
             <th class="text-white">Nama Siswa</th>
+            <th class="text-white">SPP</th>
             <th class="text-white">Tagihan</th>
+            <th class="text-white">Discount</th>
             <th class="text-white">NIS</th>
             <th class="text-white">Nama Wali</th>
             <th class="text-white">Bulan Tagihan</th>
@@ -57,7 +59,9 @@
           <tr>
             <th scope="row">{{ $loop->iteration }}</th>
             <td>{{ $item->student->name }}</td>
-            <td>{{ $item->price }}</td>
+            <td>{{ 'Rp. ' . number_format($item->price + $item->discount, 0, ',', '.') }}</td>
+            <td>{{ 'Rp. ' . number_format($item->price, 0, ',', '.') }}</td>
+            <td>{{ 'Rp. ' . number_format($item->discount, 0, ',', '.') }}</td>
             <td>{{ $item->student->nis }}</td>
             <td>{{ $item->student->studentParent->name }}</td>
             <td>{{ $item->bulan }}</td>
@@ -66,17 +70,12 @@
             <td>{{ $item->status }}</td>
             <td>{{ $item->tahun }}</td>
             <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{{ route('spp.edit', $item->id) }}"><i class="bx bx-edit-alt me-1"></i>Edit</a>
-                  <form action="{{ route('spp.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="dropdown-item"><i class="bx bx-trash me-1"></i>Delete</button>
-                  </form>
-                </div>
-              </div>
+              <a href="{{ route('spp.edit', $item->id) }}" class="btn btn-sm btn-warning"><i class="bx bx-edit-alt me-1"></i>Edit</a>
+              <form action="{{ route('spp.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')" style="display: inline-block">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-sm btn-danger"><i class="bx bx-trash me-1"></i>Delete</button>
+              </form>
             </td>
           </tr>
           @endforeach

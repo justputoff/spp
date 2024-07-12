@@ -76,55 +76,55 @@
                   <div data-i18n="Analytics">Dashboard</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item {{ Route::is('user*') ? 'active' : '' }}">
                 <a href="{{ route('user.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-user-detail"></i>
-                  <div data-i18n="Analytics">User</div>
+                  <div data-i18n="Analytics">Accounts</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item {{ Route::is('parent*') ? 'active' : '' }}">
                 <a href="{{ route('parent.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-user"></i>
                   <div data-i18n="Analytics">Wali Murid</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item {{ Route::is('ta*') ? 'active' : '' }}">
                 <a href="{{ route('ta.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-calendar"></i>
                   <div data-i18n="Analytics">Tahun Ajaran Siswa</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item {{ Route::is('grade*') ? 'active' : '' }}">
                 <a href="{{ route('grade.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-group"></i>
                   <div data-i18n="Analytics">Rombel Siswa</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item {{ Route::is('student*') ? 'active' : '' }}">
                 <a href="{{ route('student.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-user-circle"></i>
                   <div data-i18n="Analytics">Siswa</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item {{ Route::is(['spp.index', 'spp.edit']) ? 'active' : '' }}">
                 <a href="{{ route('spp.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-wallet"></i>
                   <div data-i18n="Analytics">Spp</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item {{ Route::is(['spp/student.index', 'spp/student.edit']) ? 'active' : '' }}">
                 <a href="{{ route('spp/student.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-cog"></i>
                   <div data-i18n="Analytics">Master SPP</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item {{ Route::is('transaction*') ? 'active' : '' }}">
                 <a href="{{ route('transaction.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-bank"></i>
                   <div data-i18n="Analytics">Transactions</div>
                 </a>
               </li>
-              <li class="menu-item">
+              <li class="menu-item {{ Route::is('report*') ? 'active' : '' }}">
                 <a href="{{ route('report.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-report"></i>
                   <div data-i18n="Analytics">Report</div>

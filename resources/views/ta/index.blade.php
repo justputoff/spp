@@ -6,13 +6,13 @@
 
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">
-    <h5 class="card-header">Tambah TA Siswa</h5>
+    <h5 class="card-header">Tambah Tahun Ajaran Siswa</h5>
     <form action="{{ route('ta.store') }}" method="POST" class="p-3" enctype="multipart/form-data">
       @csrf
       <div class="row mb-3">
         <label class="col-sm-2 col-form-label" for="basic-default-name">Nama</label>
         <div class="col-sm-10">
-          <input type="number" name="name" class="form-control" id="basic-default-name" placeholder="" />
+          <input type="text" name="name" class="form-control" id="basic-default-name" placeholder="" />
         </div>
       </div>
       <div class="row justify-content-end">
@@ -40,13 +40,12 @@
             <th scope="row">{{ $loop->iteration }}</th>
             <td>{{ $item->name }}</td>
             <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{{ route('ta.edit', $item->id) }}"><i class="bx bx-edit-alt me-1"></i>Edit</a>
-                  <a class="dropdown-item" href="{{ route('ta.destroy', $item->id) }}"><i class="bx bx-trash me-1"></i>Delete</a>
-                </div>
-              </div>
+              <a href="{{ route('ta.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+              <form action="{{ route('ta.destroy', $item->id) }}" method="post" style="display:inline-block;">
+                @csrf
+                @method('delete')
+                <button type="submit" onclick="confirm('Are you sure you want to delete this item?')" class="btn btn-sm btn-danger">Delete</button>
+              </form>
             </td>
           </tr>
           @endforeach

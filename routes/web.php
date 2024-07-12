@@ -77,7 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('spp/destroy/{id}', [SppController::class, 'destroy'])->name('spp.destroy');
     //MASTER SPP
     Route::get('spp/student/index', [StudentFeeController::class, 'index'])->name('spp/student.index');
-    Route::get('spp/student/create', [StudentFeeController::class, 'create'])->name('spp/student.create');
+    // Route::get('spp/student/create', [StudentFeeController::class, 'create'])->name('spp/student.create');
     Route::get('spp/student/edit/{id}', [StudentFeeController::class, 'edit'])->name('spp/student.edit');
     Route::put('spp/student/update/{id}', [StudentFeeController::class, 'update'])->name('spp/student.update');
     Route::post('spp/student/store', [StudentFeeController::class, 'store'])->name('spp/student.store');

@@ -40,13 +40,12 @@
             <th scope="row">{{ $loop->iteration }}</th>
             <td>{{ $item->name }}</td>
             <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{{ route('grade.edit', $item->id) }}"><i class="bx bx-edit-alt me-1"></i>Edit</a>
-                  <a class="dropdown-item" href="{{ route('grade.destroy', $item->id) }}"><i class="bx bx-trash me-1"></i>Delete</a>
-                </div>
-              </div>
+              <a href="{{ route('grade.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+              <form action="{{ route('grade.destroy', $item->id) }}" method="post" style="display:inline-block;">
+                @csrf
+                @method('delete')
+                <button type="submit" onclick="confirm('Are you sure you want to delete this item?')" class="btn btn-sm btn-danger">Delete</button>
+              </form>
             </td>
           </tr>
           @endforeach
