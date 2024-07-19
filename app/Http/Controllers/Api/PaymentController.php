@@ -125,6 +125,7 @@ class PaymentController extends Controller
             'amount' => 'required|numeric',
             'payment_method' => 'required|string',
             'payment_proof' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
+            'status' => 'nullable|string',
         ]);
 
         $data = $request->only(['amount', 'status', 'payment_method']);

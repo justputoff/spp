@@ -140,6 +140,7 @@ class PaymentController extends Controller
     public function detailsEdit(PaymentDetail $paymentDetail)
     {
         $paymentDetail = PaymentDetail::find($paymentDetail);
+        dd($paymentDetail);
         return view('payments.details.edit', compact('paymentDetail'));
     }
 
