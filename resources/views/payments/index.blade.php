@@ -13,6 +13,8 @@
                         <tr class="text-nowrap table-dark">
                             <th class="text-white">No</th>
                             <th class="text-white">User</th>
+                            <th class="text-white">Nama Siswa</th>
+                            <th class="text-white">Nik Siswa</th>
                             <th class="text-white">Fee Type</th>
                             <th class="text-white">Jumlah Pembayaran</th>
                             <th class="text-white">Created At</th>
@@ -25,6 +27,8 @@
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $payment->user->name }}</td>
+                            <td>{{ $payment->user->student_name }}</td>
+                            <td>{{ $payment->user->student_nik }}</td>
                             <td>{{ $payment->fee->name }}</td>
                             <td>Rp. {{ number_format($payment->amount, 0, ',', '.') }}</td>
                             <td>{{ date_format($payment->created_at, 'd - F - Y | H:i:s') }}</td>
