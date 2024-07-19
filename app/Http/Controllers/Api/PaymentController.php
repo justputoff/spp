@@ -35,12 +35,14 @@ class PaymentController extends Controller
             'student_name' => 'required|string|max:255',
             'student_nik' => 'required|string|max:255',
             'fee_id' => 'required|exists:fees,id',
+            'status' => 'required|string',
         ]);
 
         $payment = Payment::create([
             'student_name' => $request->student_name,
             'student_nik' => $request->student_nik,
             'fee_id' => $request->fee_id,
+            'status' => $request->status,
             'amount' => $amount,
             'user_id' => Auth::id(),
         ]);
