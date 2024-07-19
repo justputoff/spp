@@ -139,7 +139,6 @@ class PaymentController extends Controller
      */
     public function detailsEdit(PaymentDetail $paymentDetail)
     {
-        dd($paymentDetail);
         return view('payments.details.edit', compact('paymentDetail'));
     }
 
