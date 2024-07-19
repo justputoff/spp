@@ -34,8 +34,9 @@
         <label class="col-sm-2 col-form-label" for="status">Status</label>
         <div class="col-sm-10">
           <select name="status" class="form-select" id="status">
-            <option value="Pending">Pending</option>
-            <option value="Completed">Completed</option>
+            <option value="pending">Pending</option>
+            <option value="paid">Paid</option>
+            <option value="ongoing">Ongoing</option>
           </select>
         </div>
       </div>
