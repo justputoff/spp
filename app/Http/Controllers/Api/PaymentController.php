@@ -15,9 +15,9 @@ class PaymentController extends Controller
     public function index()
     {
         if(Auth::user()->role == 'ADMIN'){
-            $payments = Payment::with('user', 'fee')->get();
+            $payments = Payment::with('user', 'fee', 'paymentDetails')->get();
         }else{
-            $payments = Payment::with('user', 'fee')->where('user_id', Auth::id())->get();
+            $payments = Payment::with('user', 'fee', 'paymentDetails')->where('user_id', Auth::id())->get();
         }
         return response()->json($payments, 200);
     }
