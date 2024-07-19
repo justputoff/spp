@@ -5,7 +5,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">
     <h5 class="card-header">Edit Detail Pembayaran</h5>
-    <form action="{{ route('paymentDetails.update', $paymentDetail->id) }}" method="POST" class="p-3" enctype="multipart/form-data">
+    <form action="{{ route('payments.details.update', $paymentDetail->id) }}" method="POST" class="p-3" enctype="multipart/form-data">
       @csrf
       @method('PUT')
       <div class="row mb-3">
