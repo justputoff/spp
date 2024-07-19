@@ -29,8 +29,8 @@
         <label class="col-sm-2 col-form-label" for="status">Status</label>
         <div class="col-sm-10">
           <select name="status" class="form-select" id="status">
-            <option value="Pending" {{ $paymentDetail->status == 'Pending' ? 'selected' : '' }}>Pending</option>
-            <option value="Paid" {{ $paymentDetail->status == 'Paid' ? 'selected' : '' }}>Paid</option>
+            <option value="pending" {{ $paymentDetail->status == 'pending' ? 'selected' : '' }}>Pending</option>
+            <option value="paid" {{ $paymentDetail->status == 'paid' ? 'selected' : '' }}>Paid</option>
           </select>
         </div>
       </div>
