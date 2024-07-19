@@ -97,7 +97,7 @@ class PaymentController extends Controller
         $request->validate([
             'amount' => 'required|numeric',
             'payment_method' => 'required|string',
-            'status' => 'required|string',
+            'status' => 'nullable|string',
             'payment_proof' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
         ]);
 
