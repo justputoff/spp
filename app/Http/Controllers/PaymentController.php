@@ -139,7 +139,8 @@ class PaymentController extends Controller
      */
     public function detailsEdit(PaymentDetail $paymentDetail)
     {
-        return view('payments.details.edit', compact('paymentDetail'));
+        $payments = Payment::all(); 
+        return view('payments.details.edit', compact('paymentDetail', 'payments'));
     }
 
     /**
