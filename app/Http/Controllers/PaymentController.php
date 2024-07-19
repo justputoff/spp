@@ -39,6 +39,7 @@ class PaymentController extends Controller
             'student_name' => 'required|string|max:255',
             'student_nik' => 'required|string|max:255',
             'fee_id' => 'required|exists:fees,id',
+            'status' => 'nullable|string',
         ]);
 
 
@@ -47,6 +48,7 @@ class PaymentController extends Controller
             'student_nik' => $request->student_nik,
             'fee_id' => $request->fee_id,
             'amount' => $amount,
+            'status' => $request->status,
             'user_id' => Auth::id(), // Mengambil user_id dari pengguna yang sedang login
         ]);
 
@@ -71,7 +73,7 @@ class PaymentController extends Controller
             'student_name' => 'required|string|max:255',
             'student_nik' => 'required|string|max:255',
             'fee_id' => 'required|exists:fees,id',
-            'status' => 'required|string',
+            'status' => 'nullable|string',
         ]);
 
         $payment->update([
@@ -120,6 +122,7 @@ class PaymentController extends Controller
             'amount' => 'required|numeric',
             'payment_method' => 'required|string',
             'payment_proof' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
+            'status' => 'nullable|string',
         ]);
 
         $data = $request->only(['amount', 'status', 'payment_method']);
@@ -152,6 +155,7 @@ class PaymentController extends Controller
             'amount' => 'required|numeric',
             'payment_method' => 'required|string',
             'payment_proof' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
+            'status' => 'nullable|string',
         ]);
 
         $data = $request->only(['amount', 'status', 'payment_method']);
