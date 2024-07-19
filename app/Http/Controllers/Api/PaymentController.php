@@ -35,7 +35,7 @@ class PaymentController extends Controller
             'student_name' => 'required|string|max:255',
             'student_nik' => 'required|string|max:255',
             'fee_id' => 'required|exists:fees,id',
-            'status' => 'required|string',
+            'status' => 'nullable|string',
         ]);
 
         $payment = Payment::create([
@@ -62,7 +62,7 @@ class PaymentController extends Controller
             'student_name' => 'required|string|max:255',
             'student_nik' => 'required|string|max:255',
             'fee_id' => 'required|exists:fees,id',
-            'status' => 'required|string',
+            'status' => 'nullable|string',
         ]);
 
         $payment->update([
@@ -97,6 +97,7 @@ class PaymentController extends Controller
         $request->validate([
             'amount' => 'required|numeric',
             'payment_method' => 'required|string',
+            'status' => 'required|string',
             'payment_proof' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
         ]);
 
