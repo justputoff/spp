@@ -27,8 +27,8 @@
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $payment->user->name }}</td>
-                            <td>{{ $payment->user->student_name }}</td>
-                            <td>{{ $payment->user->student_nik }}</td>
+                            <td>{{ $payment->student_name }}</td>
+                            <td>{{ $payment->student_nik }}</td>
                             <td>{{ $payment->fee->name }}</td>
                             <td>Rp. {{ number_format($payment->amount, 0, ',', '.') }}</td>
                             <td>{{ date_format($payment->created_at, 'd - F - Y | H:i:s') }}</td>
