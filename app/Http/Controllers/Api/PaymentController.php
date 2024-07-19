@@ -84,7 +84,7 @@ class PaymentController extends Controller
     public function detailsIndex(Payment $payment)
     {
         $paymentDetails = PaymentDetail::with('payment')->where('payment_id', $payment->id)->get();
-        return response()->json(['paymentDetails' => $paymentDetails, 'payment' => $payment], 200);
+        return response()->json(['paymentDetails' => $paymentDetails], 200);
     }
 
     public function detailsCreate(Payment $payment)
