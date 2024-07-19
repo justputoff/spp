@@ -16,6 +16,7 @@
                             <th class="text-white">Fee Type</th>
                             <th class="text-white">Jumlah Pembayaran</th>
                             <th class="text-white">Created At</th>
+                            <th class="text-white">Status</th>
                             <th class="text-white">Actions</th>
                         </tr>
                     </thead>
@@ -27,6 +28,7 @@
                             <td>{{ $payment->fee->name }}</td>
                             <td>Rp. {{ number_format($payment->amount, 0, ',', '.') }}</td>
                             <td>{{ date_format($payment->created_at, 'd - F - Y | H:i:s') }}</td>
+                            <td>{{ $payment->status }}</td>
                             <td>
                                 <a href="{{ route('payments.edit', $payment->id) }}" class="btn btn-sm btn-warning"><i class="bx bx-edit-alt me-1"></i>Edit</a>
                                 <a href="{{ route('payments.details.index', $payment->id) }}" class="btn btn-sm btn-info"><i class="bx bx-info-circle me-1"></i>Detail</a>
