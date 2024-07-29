@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('grade_id')->constrained('grades')->onDelete('cascade');
             $table->string('bulan');
             $table->string('tahun');
+            $table->string('tahun_ajaran');
             $table->integer('price');
             $table->date('tanggal')->nullable();
             $table->string('via')->nullable();

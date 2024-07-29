@@ -17,6 +17,7 @@ class SppStudent extends Model
         'tahun',
         'grade_id',
         'student_id',
+        'tahun_ajaran',
     ];
 
     public function student(){

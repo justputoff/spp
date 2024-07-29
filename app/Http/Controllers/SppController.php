@@ -91,6 +91,7 @@ class SppController extends Controller
                     'student_id' => $student->id,
                     'bulan' => $bulan,
                     'tahun' => $tahun,
+                    'tahun_ajaran' => $request->tahun_ajaran,
                     'price' => $student->studentFee->price,
                     'grade_id' => $student->grade_id,
                 ]);
