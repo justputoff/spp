@@ -12,4 +12,8 @@ class StudentFee extends Model
         'name',
         'price',
     ];
+
+    public function students(){
+        return $this->hasMany(Student::class);
+    }
 }

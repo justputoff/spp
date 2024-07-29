@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
         // Menjalankan seeder
         $this->call([
             UserSeeder::class,
+            StudentFeeSeeder::class,
             TaSeeder::class,
             GradeSeeder::class,
             ParentSeeder::class,
-            StudentFeeSeeder::class,
         ]);
     }
 

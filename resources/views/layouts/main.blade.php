@@ -175,6 +175,11 @@
       });
     </script>
     <script>
+      $(document).ready(function() {
+        $('#select1').select2();
+      });
+    </script>
+    <script>
       $(document).ready(function () {
           $('#example').DataTable({
           });

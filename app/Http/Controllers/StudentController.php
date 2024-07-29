@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Grade;
 use App\Models\Student;
+use App\Models\StudentFee;
 use App\Models\StudentParent;
 use App\Models\TaStudent;
 use Illuminate\Http\Request;
@@ -32,10 +33,12 @@ class StudentController extends Controller
         $parents = StudentParent::orderBy('name', 'asc')->get();
         $grades = Grade::all();
         $ta = TaStudent::all();
+        $studentFee = StudentFee::all();
         return view('siswa.create', [
             'parents' => $parents,
             'grades' => $grades,
             'ta' => $ta,
+            'studentFee' => $studentFee,
         ]);
     }
 
@@ -66,11 +69,13 @@ class StudentController extends Controller
         $parents = StudentParent::all();
         $grades = Grade::all();
         $ta = TaStudent::all();
+        $studentFee = StudentFee::all();
         return view('siswa.edit', [
             'item' => $item,
             'parents' => $parents,
             'grades' => $grades,
             'ta' => $ta,
+            'studentFee' => $studentFee,
         ]);
     }
 

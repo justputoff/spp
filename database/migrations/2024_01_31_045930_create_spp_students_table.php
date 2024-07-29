@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('bulan');
             $table->string('tahun');
             $table->integer('price');
-            $table->integer('discount')->nullable();
             $table->date('tanggal')->nullable();
             $table->string('via')->nullable();
             $table->string('status')->default('BELUM BAYAR');

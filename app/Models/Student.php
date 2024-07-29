@@ -12,6 +12,7 @@ class Student extends Model
         'grade_id',
         'student_parent_id',
         'ta_student_id',
+        'student_fee_id',
         'nis',
         'nisn',
         'nik',
@@ -34,5 +35,9 @@ class Student extends Model
    
     public function sppStudent(){
         return $this->hasOne(SppStudent::class);
+    }
+   
+    public function studentFee(){
+        return $this->belongsTo(StudentFee::class);
     }
 }

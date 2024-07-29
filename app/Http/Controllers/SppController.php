@@ -81,8 +81,7 @@ class SppController extends Controller
                     'student_id' => $student->id,
                     'bulan' => $bulan,
                     'tahun' => $tahun,
-                    'price' => $price - $student->discount,
-                    'discount' => $student->discount,
+                    'price' => $student->studentFee->price,
                     'grade_id' => $student->grade_id,
                 ]);
             }

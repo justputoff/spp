@@ -15,6 +15,7 @@ class StudentFeeSeeder extends Seeder
     {
         DB::table('student_fees')->insert([
             'price' => 200000,
+            'name' => 'SPP SD',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

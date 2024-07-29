@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('grade_id')->constrained('grades')->onDelete('cascade');
             $table->foreignId('student_parent_id')->constrained('student_parents')->onDelete('cascade');
             $table->foreignId('ta_student_id')->constrained('ta_students')->onDelete('cascade');
+            $table->foreignId('student_fee_id')->constrained('student_fees')->onDelete('cascade');
             $table->string('name');
-            $table->integer('discount')->default(0);
             $table->string('nis');
             $table->string('nisn');
             $table->string('nik');

@@ -35,9 +35,13 @@
           </div>
         </div>
         <div class="row mb-3">
-          <label class="col-sm-2 col-form-label" for="basic-default-name">Discount SPP</label>
+          <label for="parentSelect" class="form-label col-sm-2">SPP</label>
           <div class="col-sm-10">
-            <input type="number" name="discount" class="form-control" id="basic-default-name" placeholder="" />
+            <select class="form-select" name="student_fee_id" id="select1" aria-label="Default select example">
+              @foreach ($studentFee as $fee)
+              <option value="{{ $fee->id }}">{{ $fee->name }}</option>
+              @endforeach
+            </select>
           </div>
         </div>
         <div class="row mb-3">

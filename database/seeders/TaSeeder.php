@@ -15,7 +15,7 @@ class TaSeeder extends Seeder
     {
         DB::table('ta_students')->insert([
             [
-                'name' => '2024',
+                'name' => '2024 / 2025',
             ],
         ]);
     }

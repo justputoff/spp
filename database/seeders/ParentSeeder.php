@@ -53,6 +53,7 @@ class ParentSeeder extends Seeder
                 'grade_id' => $grades[$gradeIndex],
                 'student_parent_id' => $parentId, // Gunakan ID parent yang sesuai
                 'ta_student_id' => 1,
+                'student_fee_id' => 1,
                 'nis' => rand(100000, 999999),
                 'nisn' => rand(1000000000, 9999999999),
                 'nik' => rand(1000000000, 9999999999),
