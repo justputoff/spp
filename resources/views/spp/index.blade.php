@@ -41,7 +41,7 @@
           <tr class="text-nowrap table-dark">
             <th class="text-white">No</th>
             <th class="text-white">Nama Siswa</th>
-            <th class="text-white">SPP</th>
+            <th class="text-white">Jenis SPP</th>
             <th class="text-white">Tagihan</th>
             <th class="text-white">Jenis SPP</th>
             <th class="text-white">NIS</th>
