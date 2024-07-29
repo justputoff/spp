@@ -25,12 +25,6 @@
           <input type="number" name="tahun" value="{{ date('Y') }}" class="form-control" id="basic-default-name" placeholder="" />
         </div>
       </div>
-      <div class="row mb-3">
-        <label class="col-sm-2 col-form-label" for="basic-default-name">Tahun Ajaran</label>
-        <div class="col-sm-10">
-          <input type="text" name="tahun_ajaran" class="form-control" id="basic-default-name" placeholder="" />
-        </div>
-      </div>
       <div class="row justify-content-end">
         <div class="col-sm-10">
           <button type="submit" onclick="return confirm('Apakah Anda yakin ingin mengirim data ini?')" class="btn btn-sm btn-dark mt-3">Kirim</button>
@@ -55,6 +49,7 @@
             <th class="text-white">Via Bayar</th>
             <th class="text-white">Status</th>
             <th class="text-white">Tahun</th>
+            <th class="text-white">Tahun Ajaran</th>
             <th class="text-white">Actions</th>
           </tr>
         </thead>
@@ -71,6 +66,7 @@
             <td>{{ $item->via ?? 'BELUM BAYAR' }}</td>
             <td>{{ $item->status }}</td>
             <td>{{ $item->tahun }}</td>
+            <td>{{ $item->tahun_ajaran }}</td>
             <td>
               <a href="{{ route('spp.edit', $item->id) }}" class="btn btn-sm btn-warning"><i class="bx bx-edit-alt me-1"></i>Edit</a>
               <form action="{{ route('spp.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')" style="display: inline-block">
