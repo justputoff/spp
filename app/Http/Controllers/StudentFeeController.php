@@ -36,7 +36,12 @@ class StudentFeeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required'
+        ]);
+
+        $data = $request->only('name', 'price');
         StudentFee::create($data);
         return redirect()->route('spp/student.index')->with('success', 'SUKSES');
     }

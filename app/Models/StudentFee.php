@@ -9,6 +9,7 @@ class StudentFee extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'price'
+        'name',
+        'price',
     ];
 }

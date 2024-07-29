@@ -10,6 +10,12 @@
     <form action="{{ route('spp/student.store') }}" method="POST" class="p-3" enctype="multipart/form-data">
       @csrf
       <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
+        <div class="col-sm-10">
+          <input type="text" name="name" class="form-control" id="basic-default-name" placeholder="" />
+        </div>
+      </div>
+      <div class="row mb-3">
         <label class="col-sm-2 col-form-label" for="basic-default-name">Tarif SPP</label>
         <div class="col-sm-10">
           <input type="number" name="price" class="form-control" id="basic-default-name" placeholder="" />
@@ -31,7 +37,7 @@
           <tr class="text-nowrap table-dark">
             <th class="text-white">No</th>
             <th class="text-white">Created At</th>
-            <th class="text-white">Updated At</th>
+            <th class="text-white">Name</th>
             <th class="text-white">Tarif</th>
             <th class="text-white">Actions</th>
           </tr>
@@ -41,7 +47,7 @@
           <tr>
             <th scope="row">{{ $loop->iteration }}</th>
             <td>{{ date_format($item->created_at, 'd - F - Y | H:i:s') }}</td>
-            <td>{{ date_format($item->updated_at, 'd - F - Y | H:i:s ')  }}</td>
+            <td>{{ $item->name }}</td>
             <td>Rp. {{ number_format($item->price, 0, ',', '.') }}</td>
             <td>
               <form action="{{ route('spp/student.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')" style="display: inline-block">
