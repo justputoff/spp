@@ -72,7 +72,6 @@ Route::middleware('auth')->group(function () {
     Route::put('spp/update/{id}', [SppController::class, 'update'])->name('spp.update');
     Route::post('spp/store', [SppController::class, 'store'])->name('spp.store');
     Route::delete('spp/destroy/{id}', [SppController::class, 'destroy'])->name('spp.destroy');
-    Route::get('spp/show/{id}', [SppController::class, 'show'])->name('spp.show');
     //MASTER SPP
     Route::get('spp/student/index', [StudentFeeController::class, 'index'])->name('spp/student.index');
     Route::post('spp/student/store', [StudentFeeController::class, 'store'])->name('spp/student.store');
@@ -104,6 +103,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('payments/details/destroy/{paymentDetail}', [PaymentController::class, 'detailsDestroy'])->name('payments.details.destroy');
 });
 
+Route::get('spp/show/{id}', [SppController::class, 'show'])->name('spp.show');
 Route::get('/report', [ReportController::class, 'index'])->name('report.index');
 Route::get('generate-dummy-data', [ReportController::class, 'generateDummyData']);
 
