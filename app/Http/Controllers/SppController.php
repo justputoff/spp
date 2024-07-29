@@ -52,15 +52,25 @@ class SppController extends Controller
     {
         $spp = StudentFee::latest()->first(); // Mendapatkan informasi fee terbaru
 
-        $students = Student::all(); // Mendapatkan semua data siswa
-
         $bulan = $request->bulan;
         $tahun = $request->tahun;
 
         // Validasi jika data dengan bulan dan tahun yang sama sudah ada
         $existingData = SppStudent::where('bulan', $bulan)->where('tahun', $tahun)->exists();
         if ($existingData) {
-            return back()->with('error', 'Data untuk bulan dan tahun ini sudah ada.');
+            // Cek siswa yang belum memiliki SPP untuk bulan dan tahun ini
+            $studentsWithoutSpp = Student::whereDoesntHave('sppStudents', function ($query) use ($bulan, $tahun) {
+                $query->where('bulan', $bulan)->where('tahun', $tahun);
+            })->get();
+
+            if ($studentsWithoutSpp->isEmpty()) {
+                return back()->with('error', 'Data untuk bulan dan tahun ini sudah lengkap untuk semua siswa.');
+            }
+
+            // Jika ada siswa yang belum memiliki SPP, lanjutkan proses hanya untuk siswa-siswa tersebut
+            $students = $studentsWithoutSpp;
+        } else {
+            $students = Student::all();
         }
 
         // Kelompokkan siswa berdasarkan parent mereka (student_parent_id)

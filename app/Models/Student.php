@@ -33,8 +33,8 @@ class Student extends Model
         return $this->belongsTo(TaStudent::class);
     }
    
-    public function sppStudent(){
-        return $this->hasOne(SppStudent::class);
+    public function sppStudents(){
+        return $this->hasMany(SppStudent::class);
     }
    
     public function studentFee(){
