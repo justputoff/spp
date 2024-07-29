@@ -122,7 +122,7 @@
                         </li>
                         <li class="menu-item {{ Route::is('ta*') ? 'active' : '' }}">
                           <a href="{{ route('ta.index') }}" class="menu-link">
-                            <div data-i18n="Analytics">Tahun Ajaran Siswa</div>
+                            <div data-i18n="Analytics">Tahun Ajaran</div>
                           </a>
                         </li>
                         <li class="menu-item {{ Route::is(['spp/student.index', 'spp/student.edit']) ? 'active' : '' }}">
