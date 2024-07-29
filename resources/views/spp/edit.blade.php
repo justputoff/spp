@@ -34,6 +34,12 @@
           <input type="date" name="tanggal" value="{{ date('Y-m-d') }}" class="form-control" id="basic-default-name" placeholder="" />
         </div>
       </div>
+      <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" for="basic-default-name">Bukti Pembayaran</label>
+        <div class="col-sm-10">
+          <input type="file" name="payment_proof" class="form-control" id="basic-default-name" placeholder="" />
+        </div>
+      </div>
       <div class="row justify-content-end">
         <div class="col-sm-10">
           <button type="submit" class="btn btn-sm btn-dark mt-3">Kirim</button>

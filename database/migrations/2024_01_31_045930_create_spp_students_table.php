@@ -16,12 +16,14 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
             $table->foreignId('grade_id')->constrained('grades')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('bulan');
             $table->string('tahun');
             $table->string('tahun_ajaran');
             $table->integer('price');
             $table->date('tanggal')->nullable();
             $table->string('via')->nullable();
+            $table->string('payment_proof')->nullable();
             $table->string('status')->default('BELUM BAYAR');
         });
     }

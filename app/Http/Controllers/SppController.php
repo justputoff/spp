@@ -7,6 +7,8 @@ use App\Models\Student;
 use App\Models\StudentFee;
 use App\Models\StudentParent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class SppController extends Controller
 {
@@ -94,6 +96,7 @@ class SppController extends Controller
                     'tahun_ajaran' => $tahun . '/' . ($tahun + 1),
                     'price' => $student->studentFee->price,
                     'grade_id' => $student->grade_id,
+                    'user_id' => Auth::user()->id,
                 ]);
             }
         }
@@ -126,6 +129,13 @@ class SppController extends Controller
     {
         $data = $request->all();
         $item = SppStudent::find($id);
+        if ($request->hasFile('payment_proof')) {
+            if ($item->payment_proof) {
+                Storage::delete($item->payment_proof);
+            }
+            $data['payment_proof'] = $request->file('payment_proof')->store('payment_proof', 'public');
+        }
+        $data['user_id'] = Auth::user()->id;
         $item->update($data);
         return redirect()->route('spp.index')->with('success', 'SUKSES UPDATE DATA');
     }
@@ -137,6 +147,9 @@ class SppController extends Controller
     {
         $item = SppStudent::find($id);
         if ($item) {
+            if ($item->payment_proof) {
+                Storage::delete($item->payment_proof);
+            }
             $item->delete();
             return back()->with('success', 'Data berhasil dihapus.');
         }

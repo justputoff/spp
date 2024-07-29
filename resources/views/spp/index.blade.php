@@ -40,8 +40,11 @@
         <thead>
           <tr class="text-nowrap table-dark">
             <th class="text-white">No</th>
+            <th class="text-white">Petugas</th>
             <th class="text-white">Nama Siswa</th>
+            <th class="text-white">Rombel</th>
             <th class="text-white">Jenis SPP</th>
+            <th class="text-white">Bukti Pembayaran</th>
             <th class="text-white">NIS</th>
             <th class="text-white">Nama Wali</th>
             <th class="text-white">Bulan Tagihan</th>
@@ -57,8 +60,11 @@
           @foreach ($data as $item)
           <tr>
             <th scope="row">{{ $loop->iteration }}</th>
+            <td>{{ $item->user->name }}</td>
             <td>{{ $item->student->name }}</td>
+            <td>{{ $item->student->grade->name }}</td>
             <td>{{ $item->student->studentFee->name }} - Rp. {{ number_format($item->student->studentFee->price, 0, ',', '.') }}</td>
+            <td><a href="{{ Storage::url($item->payment_proof) }}" class="btn btn-sm btn-primary {{ $item->payment_proof ? '' : 'disabled' }}" target="_blank">Lihat Bukti</a></td>
             <td>{{ $item->student->nis }}</td>
             <td>{{ $item->student->studentParent->name }}</td>
             <td>{{ $item->bulan }}</td>

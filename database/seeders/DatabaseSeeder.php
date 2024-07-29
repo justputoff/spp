@@ -13,9 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Menghapus semua folder dalam path tertentu
-        $path = 'public'; // Path yang ingin dihapus
-        $this->deleteAllFiles($path);
+        // Menghapus semua file dalam storage
+        $this->deleteAllFiles();
 
         // Refresh migration
         Artisan::call('migrate:fresh');
@@ -31,28 +30,23 @@ class DatabaseSeeder extends Seeder
     }
 
     /**
-     * Menghapus semua folder dalam suatu path.
+     * Menghapus semua file dalam storage.
      */
-    public function deleteAllFiles($path)
+    public function deleteAllFiles()
     {
-        // Mengecek apakah path ada
-        if (Storage::exists($path)) {
-            // Mengambil semua file dalam path
-            $files = Storage::files($path);
-            
-            // Menghapus semua file
-            foreach ($files as $file) {
-                Storage::delete($file);
-            }
-    
-            // Memeriksa apakah semua file berhasil dihapus
-            if (empty(Storage::files($path))) {
-                echo "Semua file dalam path berhasil dihapus.\n";
-            } else {
-                echo "Gagal menghapus file dalam path.\n";
-            }
+        // Mengambil semua file dalam storage
+        $files = Storage::allFiles();
+        
+        // Menghapus semua file
+        foreach ($files as $file) {
+            Storage::delete($file);
+        }
+
+        // Memeriksa apakah semua file berhasil dihapus
+        if (empty(Storage::allFiles())) {
+            echo "Semua file dalam storage berhasil dihapus.\n";
         } else {
-            echo "Path tidak ditemukan.\n";
+            echo "Gagal menghapus file dalam storage.\n";
         }
     }
 }
