@@ -127,7 +127,7 @@
                         </li>
                         <li class="menu-item {{ Route::is(['spp/student.index', 'spp/student.edit']) ? 'active' : '' }}">
                           <a href="{{ route('spp/student.index') }}" class="menu-link">
-                            <div data-i18n="Analytics">Master SPP</div>
+                            <div data-i18n="Analytics">Master Nominal</div>
                           </a>
                         </li>
                         <li class="menu-item {{ Route::is('fees*') ? 'active' : '' }}">
