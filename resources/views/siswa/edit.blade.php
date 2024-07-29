@@ -40,7 +40,7 @@
           <div class="col-sm-10">
             <select class="form-select" name="student_parent_id" id="select1" aria-label="Default select example">
               @foreach ($studentFee as $fee)
-              <option value="{{ $fee->id }}" {{ $item->student_fee_id == $fee->id ? 'selected' : '' }}>{{ $fee->name }} - {{ $fee->price }}</option>
+              <option value="{{ $fee->id }}" {{ $item->student_fee_id == $fee->id ? 'selected' : '' }}>{{ $fee->name }} - Rp. {{ number_format($fee->price, 0, ',', '.') }}</option>
               @endforeach
             </select>
           </div>
