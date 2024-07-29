@@ -108,7 +108,10 @@ class SppController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $item = SppStudent::find($id);
+        return view('spp.show', [
+            'item' => $item
+        ]);
     }
 
     /**
