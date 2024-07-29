@@ -6,7 +6,7 @@
 
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">
-    <h5 class="card-header">Table Parent <a href="{{ route('student.create') }}" class="btn btn-sm btn-success">Tambah student</a></h5>
+    <h5 class="card-header">Table Siswa <a href="{{ route('student.create') }}" class="btn btn-sm btn-success">Tambah student</a></h5>
     <div class="table-responsive text-nowrap p-3">
       <table class="table" id="example">
         <thead>
