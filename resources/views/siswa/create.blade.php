@@ -35,11 +35,11 @@
           </div>
         </div>
         <div class="row mb-3">
-          <label for="parentSelect" class="form-label col-sm-2">SPP</label>
+          <label for="parentSelect" class="form-label col-sm-2">Jenis SPP</label>
           <div class="col-sm-10">
             <select class="form-select" name="student_fee_id" id="select1" aria-label="Default select example">
               @foreach ($studentFee as $fee)
-              <option value="{{ $fee->id }}">{{ $fee->name }}</option>
+              <option value="{{ $fee->id }}">{{ $fee->name }} - {{ $fee->price }}</option>
               @endforeach
             </select>
           </div>
