@@ -88,18 +88,6 @@
                   <div data-i18n="Analytics">Wali Murid</div>
                 </a>
               </li>
-              <li class="menu-item {{ Route::is('ta*') ? 'active' : '' }}">
-                <a href="{{ route('ta.index') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bxs-calendar"></i>
-                  <div data-i18n="Analytics">Tahun Ajaran Siswa</div>
-                </a>
-              </li>
-              <li class="menu-item {{ Route::is('grade*') ? 'active' : '' }}">
-                <a href="{{ route('grade.index') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bxs-group"></i>
-                  <div data-i18n="Analytics">Rombel Siswa</div>
-                </a>
-              </li>
               <li class="menu-item {{ Route::is('student*') ? 'active' : '' }}">
                 <a href="{{ route('student.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-user-circle"></i>
@@ -112,36 +100,53 @@
                   <div data-i18n="Analytics">Spp</div>
                 </a>
               </li>
-              <li class="menu-item {{ Route::is(['spp/student.index', 'spp/student.edit']) ? 'active' : '' }}">
-                <a href="{{ route('spp/student.index') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bxs-cog"></i>
-                  <div data-i18n="Analytics">Master SPP</div>
-                </a>
-              </li>
               <li class="menu-item {{ Route::is('transaction*') ? 'active' : '' }}">
                 <a href="{{ route('transaction.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-bank"></i>
                   <div data-i18n="Analytics">Transactions</div>
                 </a>
               </li>
-              <li class="menu-item {{ Route::is('fees*') ? 'active' : '' }}">
-                <a href="{{ route('fees.index') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bxs-wallet"></i>
-                  <div data-i18n="Analytics">Fee</div>
+              @php
+                  $open = Route::is('grade*') || Route::is('ta*') || Route::is('spp/student*') || Route::is('fees*') || Route::is('payments*') || Route::is('report*') ? 'open' : '';
+              @endphp
+              <li class="menu-item {{ $open }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-cog"></i>
+                    <div>Pengaturan</div>
                 </a>
-              </li>
-              <li class="menu-item {{ Route::is('payments*') ? 'active' : '' }}">
-                <a href="{{ route('payments.index') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bxs-wallet"></i>
-                  <div data-i18n="Analytics">Payment</div>
-                </a>
-              </li>
-              <li class="menu-item {{ Route::is('report*') ? 'active' : '' }}">
-                <a href="{{ route('report.index') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bxs-report"></i>
-                  <div data-i18n="Analytics">Report</div>
-                </a>
-              </li>
+                <ul class="menu-sub">
+                        <li class="menu-item {{ Route::is('grade*') ? 'active' : '' }}">
+                          <a href="{{ route('grade.index') }}" class="menu-link">
+                            <div data-i18n="Analytics">Rombel Siswa</div>
+                          </a>
+                        </li>
+                        <li class="menu-item {{ Route::is('ta*') ? 'active' : '' }}">
+                          <a href="{{ route('ta.index') }}" class="menu-link">
+                            <div data-i18n="Analytics">Tahun Ajaran Siswa</div>
+                          </a>
+                        </li>
+                        <li class="menu-item {{ Route::is(['spp/student.index', 'spp/student.edit']) ? 'active' : '' }}">
+                          <a href="{{ route('spp/student.index') }}" class="menu-link">
+                            <div data-i18n="Analytics">Master SPP</div>
+                          </a>
+                        </li>
+                        <li class="menu-item {{ Route::is('fees*') ? 'active' : '' }}">
+                          <a href="{{ route('fees.index') }}" class="menu-link">
+                            <div data-i18n="Analytics">Fee</div>
+                          </a>
+                        </li>
+                        <li class="menu-item {{ Route::is('payments*') ? 'active' : '' }}">
+                          <a href="{{ route('payments.index') }}" class="menu-link">
+                            <div data-i18n="Analytics">Payment</div>
+                          </a>
+                        </li>
+                        <li class="menu-item {{ Route::is('report*') ? 'active' : '' }}">
+                          <a href="{{ route('report.index') }}" class="menu-link">
+                            <div data-i18n="Analytics">Report</div>
+                          </a>
+                        </li>
+                </ul>
+            </li>
             </ul>
           </aside>
           <!-- / Menu -->
