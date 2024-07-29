@@ -75,7 +75,9 @@
             <td>{{ $item->tahun_ajaran }}</td>
             <td>
               <a href="{{ route('spp.edit', $item->id) }}" class="btn btn-sm btn-warning"><i class="bx bx-edit-alt me-1"></i>Edit</a>
-              <a href="{{ route('spp.show', $item->id) }}" class="btn btn-sm btn-info"><i class="bx bx-show me-1"></i>Show</a>
+              @if ($item->status == 'LUNAS')
+                <a href="{{ route('spp.show', $item->id) }}" class="btn btn-sm btn-info" target="_blank"><i class="bx bx-show me-1"></i>Kuitansi</a>
+              @endif
               <form action="{{ route('spp.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')" style="display: inline-block">
                 @csrf
                 @method('DELETE')
