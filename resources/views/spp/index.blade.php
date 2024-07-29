@@ -43,7 +43,7 @@
             <th class="text-white">Nama Siswa</th>
             <th class="text-white">SPP</th>
             <th class="text-white">Tagihan</th>
-            <th class="text-white">Discount</th>
+            <th class="text-white">Jenis SPP</th>
             <th class="text-white">NIS</th>
             <th class="text-white">Nama Wali</th>
             <th class="text-white">Bulan Tagihan</th>
@@ -61,7 +61,7 @@
             <td>{{ $item->student->name }}</td>
             <td>{{ 'Rp. ' . number_format($item->price + $item->discount, 0, ',', '.') }}</td>
             <td>{{ 'Rp. ' . number_format($item->price, 0, ',', '.') }}</td>
-            <td>{{ 'Rp. ' . number_format($item->discount, 0, ',', '.') }}</td>
+            <td>{{ $item->student->studentFee->name }} - Rp. {{ number_format($item->student->studentFee->price, 0, ',', '.') }}</td>
             <td>{{ $item->student->nis }}</td>
             <td>{{ $item->student->studentParent->name }}</td>
             <td>{{ $item->bulan }}</td>
