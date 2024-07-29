@@ -132,7 +132,7 @@
                         </li>
                         <li class="menu-item {{ Route::is('fees*') ? 'active' : '' }}">
                           <a href="{{ route('fees.index') }}" class="menu-link">
-                            <div data-i18n="Analytics">Fee</div>
+                            <div data-i18n="Analytics">Master Uang PANGKAL / DAFTAR ULANG</div>
                           </a>
                         </li>
                         <li class="menu-item {{ Route::is('payments*') ? 'active' : '' }}">
