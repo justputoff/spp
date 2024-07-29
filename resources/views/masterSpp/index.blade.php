@@ -37,7 +37,7 @@
           <tr class="text-nowrap table-dark">
             <th class="text-white">No</th>
             <th class="text-white">Created At</th>
-            <th class="text-white">Name</th>
+            <th class="text-white">Label</th>
             <th class="text-white">Tarif</th>
             <th class="text-white">Actions</th>
           </tr>
