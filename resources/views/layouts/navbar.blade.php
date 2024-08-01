@@ -100,6 +100,12 @@
                   <div data-i18n="Analytics">Spp</div>
                 </a>
               </li>
+              <li class="menu-item {{ Route::is(['payments*']) ? 'active' : '' }}">
+                <a href="{{ route('payments.index') }}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bxs-wallet"></i>
+                  <div data-i18n="Analytics">Uang Pangkal / Daftar</div>
+                </a>
+              </li>
               <li class="menu-item {{ Route::is('transaction*') ? 'active' : '' }}">
                 <a href="{{ route('transaction.index') }}" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-bank"></i>
@@ -107,7 +113,7 @@
                 </a>
               </li>
               @php
-                  $open = Route::is('grade*') || Route::is('ta*') || Route::is('spp/student*') || Route::is('fees*') || Route::is('payments*') || Route::is('report*') ? 'open' : '';
+                  $open = Route::is('grade*') || Route::is('ta*') || Route::is('spp/student*') || Route::is('fees*') || Route::is('report*') ? 'open' : '';
               @endphp
               <li class="menu-item {{ $open }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -132,12 +138,7 @@
                         </li>
                         <li class="menu-item {{ Route::is('fees*') ? 'active' : '' }}">
                           <a href="{{ route('fees.index') }}" class="menu-link">
-                            <div data-i18n="Analytics">Master Uang PANGKAL / DAFTAR ULANG</div>
-                          </a>
-                        </li>
-                        <li class="menu-item {{ Route::is('payments*') ? 'active' : '' }}">
-                          <a href="{{ route('payments.index') }}" class="menu-link">
-                            <div data-i18n="Analytics">Payment</div>
+                            <div data-i18n="Analytics">Master Keuangan</div>
                           </a>
                         </li>
                         <li class="menu-item {{ Route::is('report*') ? 'active' : '' }}">

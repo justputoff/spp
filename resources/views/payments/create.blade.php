@@ -8,15 +8,13 @@
     <form action="{{ route('payments.store') }}" method="POST" class="p-3" enctype="multipart/form-data">
       @csrf
       <div class="row mb-3">
-        <label class="col-sm-2 col-form-label" for="student_name">Nama Siswa</label>
+        <label for="parentSelect" class="form-label col-sm-2">Student</label>
         <div class="col-sm-10">
-          <input type="text" name="student_name" class="form-control" id="student_name" placeholder="Masukkan nama siswa" />
-        </div>
-      </div>
-      <div class="row mb-3">
-        <label class="col-sm-2 col-form-label" for="student_nik">NIK Siswa</label>
-        <div class="col-sm-10">
-          <input type="text" name="student_nik" class="form-control" id="student_nik" placeholder="Masukkan NIK siswa" />
+          <select class="form-select" name="student_id" id="select2" aria-label="Default select example">
+            @foreach ($students as $student)
+            <option value="{{ $student->id }}">{{ $student->name }}</option>
+            @endforeach
+          </select>
         </div>
       </div>
       <div class="row mb-3">

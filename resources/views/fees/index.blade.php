@@ -5,7 +5,7 @@
 <!-- Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">
-    <h5 class="card-header">Tambah Fee</h5>
+    <h5 class="card-header">Tambah Master Keuangan</h5>
     <form action="{{ route('fees.store') }}" method="POST" class="p-3" enctype="multipart/form-data">
       @csrf
       <div class="row mb-3">
@@ -32,7 +32,7 @@
   </div>
 
   <div class="card mt-3">
-    <h5 class="card-header">Table Fee</h5>
+    <h5 class="card-header">Table Master Keuangan</h5>
     <div class="table-responsive text-nowrap p-3">
       <table class="table" id="example">
         <thead>

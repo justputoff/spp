@@ -14,7 +14,6 @@
                             <th class="text-white">No</th>
                             <th class="text-white">User</th>
                             <th class="text-white">Nama Siswa</th>
-                            <th class="text-white">Nik Siswa</th>
                             <th class="text-white">Fee Type</th>
                             <th class="text-white">Jumlah Pembayaran</th>
                             <th class="text-white">Created At</th>
@@ -27,10 +26,9 @@
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $payment->user->name }}</td>
-                            <td>{{ $payment->student_name }}</td>
-                            <td>{{ $payment->student_nik }}</td>
+                            <td>{{ $payment->student->name }}</td>
                             <td>{{ $payment->fee->name }}</td>
-                            <td>Rp. {{ number_format($payment->amount, 0, ',', '.') }}</td>
+                            <td>Rp. {{ number_format($payment->paymentDetails->where('status', 'paid')->sum('amount'), 0, ',', '.') }} / Rp. {{ number_format($payment->amount, 0, ',', '.') }}</td>
                             <td>{{ date_format($payment->created_at, 'd - F - Y | H:i:s') }}</td>
                             <td>{{ $payment->status }}</td>
                             <td>

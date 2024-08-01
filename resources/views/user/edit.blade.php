@@ -33,13 +33,10 @@
           <label for="exampleFormControlSelect1" class="form-label col-sm-2">Role</label>
           <div class="col-sm-10">
             <select class="form-select" name="role" id="exampleFormControlSelect1" aria-label="Default select example">
-              {{-- <option value="STUDENT">USER</option> --}}
-              <option value="{{ $item->role }}">{{ $item->role }}</option>
-              @if ($item->role == 'PARENT')
+              <option selected value="{{ $item->role }}">{{ $item->role }}</option>
               <option value="ADMIN">ADMIN</option>
-              @else
+              <option value="WALAS">WALAS</option>
               <option value="PARENT">PARENT</option>
-              @endif
             </select>
           </div>
         </div>

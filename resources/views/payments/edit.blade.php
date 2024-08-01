@@ -9,15 +9,13 @@
       @csrf
       @method('PUT')
       <div class="row mb-3">
-        <label class="col-sm-2 col-form-label" for="student_name">Nama Siswa</label>
+        <label class="col-sm-2 col-form-label" for="student_id">Nama Siswa</label>
         <div class="col-sm-10">
-          <input type="text" name="student_name" class="form-control" id="student_name" value="{{ $payment->student_name }}" placeholder="Masukkan nama siswa" />
-        </div>
-      </div>
-      <div class="row mb-3">
-        <label class="col-sm-2 col-form-label" for="student_nik">NIK Siswa</label>
-        <div class="col-sm-10">
-          <input type="text" name="student_nik" class="form-control" id="student_nik" value="{{ $payment->student_nik }}" placeholder="Masukkan NIK siswa" />
+          <select name="student_id" class="form-select" id="student_id">
+            @foreach ($students as $student)
+            <option value="{{ $student->id }}" {{ $payment->student_id == $student->id ? 'selected' : '' }}>{{ $student->name }}</option>
+            @endforeach
+          </select>
         </div>
       </div>
       <div class="row mb-3">

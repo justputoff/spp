@@ -9,8 +9,7 @@ class Payment extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'student_name',
-        'student_nik',
+        'student_id',
         'fee_id',
         'user_id',
         'status',
@@ -31,4 +30,10 @@ class Payment extends Model
     {
         return $this->hasMany(PaymentDetail::class);
     }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }
+    

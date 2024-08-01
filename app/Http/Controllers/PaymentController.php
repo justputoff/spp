@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Payment;
 use App\Models\PaymentDetail;
 use App\Models\Fee;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -26,7 +27,8 @@ class PaymentController extends Controller
     public function create()
     {
         $fees = Fee::all();
-        return view('payments.create', compact('fees'));
+        $students = Student::all();
+        return view('payments.create', compact('fees', 'students'));
     }
 
     /**
@@ -36,16 +38,14 @@ class PaymentController extends Controller
     {
         $amount = Fee::find($request->fee_id)->amount;
         $request->validate([
-            'student_name' => 'required|string|max:255',
-            'student_nik' => 'required|string|max:255',
+            'student_id' => 'required|exists:students,id',
             'fee_id' => 'required|exists:fees,id',
             'status' => 'nullable|string',
         ]);
 
 
         Payment::create([
-            'student_name' => $request->student_name,
-            'student_nik' => $request->student_nik,
+            'student_id' => $request->student_id,
             'fee_id' => $request->fee_id,
             'amount' => $amount,
             'status' => $request->status,
@@ -61,7 +61,8 @@ class PaymentController extends Controller
     public function edit(Payment $payment)
     {
         $fees = Fee::all();
-        return view('payments.edit', compact('payment', 'fees'));
+        $students = Student::all();
+        return view('payments.edit', compact('payment', 'fees', 'students'));
     }
 
     /**
@@ -70,15 +71,13 @@ class PaymentController extends Controller
     public function update(Request $request, Payment $payment)
     {
         $request->validate([
-            'student_name' => 'required|string|max:255',
-            'student_nik' => 'required|string|max:255',
+            'student_id' => 'required|exists:students,id',
             'fee_id' => 'required|exists:fees,id',
             'status' => 'nullable|string',
         ]);
 
         $payment->update([
-            'student_name' => $request->student_name,
-            'student_nik' => $request->student_nik,
+            'student_id' => $request->student_id,
             'fee_id' => $request->fee_id,
             'status' => $request->status,
         ]);
