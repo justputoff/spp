@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\StudentController;
 use App\Http\Controllers\Api\TransactionController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\PaymentController;
+use App\Http\Controllers\Api\TeacherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('login', [UserController::class, 'login']);
 Route::post('register', [UserController::class, 'register']);
 Route::get('student/index', [StudentController::class, 'index']);
+Route::get('teacher/index', [TeacherController::class, 'index']);
 Route::get('transaction/index', [TransactionController::class, 'index']);
 
 Route::middleware(['auth:sanctum'])->group(function () {

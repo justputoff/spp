@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SppStudent;
 use App\Models\Student;
+use App\Models\Teacher;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,12 +18,15 @@ class TransactionController extends Controller
     {
         if(Auth::user()->role == 'PARENT'){
             $students = Student::where('student_parent_id', Auth::user()->studentParent->id)->pluck('id'); // Mengambil hanya id siswa
-            // dd($students);
             $fees = SppStudent::whereIn('student_id', $students)->get(); // Mengambil SppStudent hanya untuk siswa yang terkait dengan user PARENT
+        } else if(Auth::user()->role == 'TEACHER'){
+            $teacher = Teacher::find(Auth::user()->teacher->id);
+            $students = $teacher->grade->students;
+            $fees = SppStudent::whereIn('student_id', $students->pluck('id'))->get();
+            // dd($fees);
         } else {
             $fees = SppStudent::all(); // Mengambil semua SppStudent jika user bukan PARENT
         }
-        
         $data = Transaction::all(); // Mengambil semua data Transaction
         
         return view('transaction.index', [

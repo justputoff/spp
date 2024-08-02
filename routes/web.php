@@ -11,6 +11,7 @@ use App\Http\Controllers\SppController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentFeeController;
 use App\Http\Controllers\TaController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -104,6 +105,12 @@ Route::middleware('auth')->group(function () {
     Route::get('payments/details/edit/{paymentDetail}', [PaymentController::class, 'detailsEdit'])->name('payments.details.edit');
     Route::put('payments/details/update/{paymentDetail}', [PaymentController::class, 'detailsUpdate'])->name('payments.details.update');
     Route::delete('payments/details/destroy/{paymentDetail}', [PaymentController::class, 'detailsDestroy'])->name('payments.details.destroy');
+    //Teacher
+    Route::get('teacher/index', [TeacherController::class, 'index'])->name('teacher.index');
+    Route::get('teacher/edit/{id}', [TeacherController::class, 'edit'])->name('teacher.edit');
+    Route::post('teacher/store', [TeacherController::class, 'store'])->name('teacher.store');
+    Route::put('teacher/update/{id}', [TeacherController::class, 'update'])->name('teacher.update');
+    Route::delete('teacher/destroy/{id}', [TeacherController::class, 'destroy'])->name('teacher.destroy');
 });
 
 Route::get('spp/show/{id}', [SppController::class, 'show'])->name('spp.show');

@@ -73,6 +73,11 @@
                             <div data-i18n="Analytics">Rombel Siswa</div>
                           </a>
                         </li>
+                        <li class="menu-item {{ Route::is('teacher*') ? 'active' : '' }}">
+                          <a href="{{ route('teacher.index') }}" class="menu-link">
+                            <div data-i18n="Analytics">Guru</div>
+                          </a>
+                        </li>
                         <li class="menu-item {{ Route::is('ta*') ? 'active' : '' }}">
                           <a href="{{ route('ta.index') }}" class="menu-link">
                             <div data-i18n="Analytics">Tahun Ajaran</div>

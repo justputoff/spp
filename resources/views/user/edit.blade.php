@@ -34,9 +34,9 @@
           <div class="col-sm-10">
             <select class="form-select" name="role" id="exampleFormControlSelect1" aria-label="Default select example">
               <option selected value="{{ $item->role }}">{{ $item->role }}</option>
-              <option value="ADMIN">ADMIN</option>
-              <option value="WALAS">WALAS</option>
-              <option value="PARENT">PARENT</option>
+              <option value="ADMIN" {{ $item->role == 'ADMIN' ? 'selected' : '' }}>ADMIN</option>
+              <option value="PARENT" {{ $item->role == 'PARENT' ? 'selected' : '' }}>PARENT</option>
+              <option value="TEACHER" {{ $item->role == 'TEACHER' ? 'selected' : '' }}>TEACHER</option>
             </select>
           </div>
         </div>

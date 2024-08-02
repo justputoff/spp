@@ -35,7 +35,7 @@
               {{-- <option value="STUDENT">USER</option> --}}
               <option value="PARENT">PARENT</option>
               <option value="ADMIN">ADMIN</option>
-              <option value="WALAS">WALAS</option>
+              <option value="TEACHER">TEACHER</option>
             </select>
           </div>
         </div>

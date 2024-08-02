@@ -5,7 +5,7 @@
 <!-- Content -->
 
 <div class="container-xxl flex-grow-1 container-p-y">
-  @if (Auth::user()->role == 'PARENT')
+  @if (Auth::user()->role !== 'ADMIN')
   <div class="card mt-3">
     <h5 class="card-header">Table SPP</h5>
     <div class="table-responsive text-nowrap p-3">
@@ -36,9 +36,9 @@
             <td>{{ number_format($fee->price, 0, ',', '.') }}</td>
             <td>{{ $fee->bulan }}</td>
             <td>{{ $fee->status }}</td>
-            @if ($fee->status == 'BELUM BAYAR' && Auth::user()->role == 'PARENT')
+            @if ($fee->status == 'BELUM BAYAR' && Auth::user()->role !== 'ADMIN')
             <td>
-              <form action="{{ route('transaction.store', $fee->id) }}" enctype="multipart/form-data" method="POST">
+              <form action="{{ route('transaction.store', $fee->id) }}" enctype="multipart/form-data" method="POST" style="min-width: max-content;">
                 @csrf
                 <div class="row">
                   <div class="mb-3 col-7">
@@ -48,7 +48,7 @@
                 </div>
               </form>
             </td>
-            @elseif($fee->status == 'LUNAS' && Auth::user()->role == 'PARENT')
+            @elseif($fee->status == 'LUNAS' && Auth::user()->role !== 'ADMIN')
             <td>DONE</td>
             @else
             <td><a href="#" class="btn btn-primary btn-sm">Bukti pembayaran</a></td>
@@ -67,6 +67,7 @@
         <thead>
           <tr class="text-nowrap table-dark">
             <th class="text-white">No</th>
+            <th class="text-white">User</th>
             <th class="text-white">Nama Siswa</th>
             <th class="text-white">Nama Wali</th>
             <th class="text-white">Email Wali</th>
@@ -84,6 +85,7 @@
           @foreach ($data as $item)
           <tr>
             <th scope="row">{{ $loop->iteration }}</th>
+            <td>{{ $item->user->name }}</td>
             <td>{{ $item->sppStudent->student->name }}</td>
             <td>{{ $item->sppStudent->student->studentParent->name }}</td>
             <td>{{ $item->sppStudent->student->studentParent->user->email }}</td>
