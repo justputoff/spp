@@ -22,9 +22,10 @@ class DatabaseSeeder extends Seeder
         // Menjalankan seeder
         $this->call([
             UserSeeder::class,
+            TeacherSeeder::class,
+            GradeSeeder::class,
             StudentFeeSeeder::class,
             TaSeeder::class,
-            GradeSeeder::class,
             ParentSeeder::class,
         ]);
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grade;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 use function Ramsey\Uuid\v1;
@@ -14,9 +15,11 @@ class GradeController extends Controller
      */
     public function index()
     {
+        $teachers = Teacher::with('user')->get();
         $data = Grade::all();
         return view('grade.index', [
-            'data' => $data
+            'data' => $data,
+            'teachers' => $teachers
         ]);
     }
 
@@ -54,9 +57,11 @@ class GradeController extends Controller
     {
         $item = Grade::find($id);
         $data = Grade::all();
+        $teachers = Teacher::with('user')->get();
         return view('grade.edit', [
             'item' => $item,
             'data' => $data,
+            'teachers' => $teachers
         ]);
     }
 

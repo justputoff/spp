@@ -16,6 +16,16 @@
           <input type="text" name="name" value="{{ $item->name }}" class="form-control" id="basic-default-name" placeholder="" />
         </div>
       </div>
+      <div class="row mb-3">
+        <label for="parentSelect" class="form-label col-sm-2">Guru</label>
+        <div class="col-sm-10">
+          <select class="form-select" name="teacher_id" id="select2" aria-label="Default select example">
+            @foreach ($teachers as $teacher)
+            <option value="{{ $teacher->id }}">{{ $teacher->user->name }}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
       <div class="row justify-content-end">
         <div class="col-sm-10">
           <button type="submit" class="btn btn-sm btn-dark mt-3">Kirim</button>

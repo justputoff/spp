@@ -14,7 +14,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::with(['studentParent', 'sppStudent', 'taStudent', 'grade'])->get();
+        $students = Student::with(['studentParent', 'sppStudents', 'taStudent', 'grade'])->get();
         return response()->json([
             'data' => $students,
             'meta' => [

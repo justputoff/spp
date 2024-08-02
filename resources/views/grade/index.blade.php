@@ -15,6 +15,16 @@
           <input type="text" name="name" class="form-control" id="basic-default-name" placeholder="" />
         </div>
       </div>
+      <div class="row mb-3">
+        <label for="parentSelect" class="form-label col-sm-2">Guru</label>
+        <div class="col-sm-10">
+          <select class="form-select" name="teacher_id" id="select2" aria-label="Default select example">
+            @foreach ($teachers as $teacher)
+            <option value="{{ $teacher->id }}">{{ $teacher->user->name }}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
       <div class="row justify-content-end">
         <div class="col-sm-10">
           <button type="submit" class="btn btn-sm btn-dark mt-3">Kirim</button>
@@ -31,6 +41,7 @@
           <tr class="text-nowrap table-dark">
             <th class="text-white">No</th>
             <th class="text-white">Nama</th>
+            <th class="text-white">Guru</th>
             <th class="text-white">Actions</th>
           </tr>
         </thead>
@@ -39,6 +50,7 @@
           <tr>
             <th scope="row">{{ $loop->iteration }}</th>
             <td>{{ $item->name }}</td>
+            <td>{{ $item->teacher->user->name }}</td>
             <td>
               <a href="{{ route('grade.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
               <form action="{{ route('grade.destroy', $item->id) }}" method="post" style="display:inline-block;">
