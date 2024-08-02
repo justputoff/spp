@@ -30,7 +30,8 @@ class GradeSeeder extends Seeder
 
         foreach ($grades as $grade) {
             DB::table('grades')->insert([
-                'name' => $grade
+                'name' => $grade,
+                'teacher_id' => 1
             ]);
         }
     }

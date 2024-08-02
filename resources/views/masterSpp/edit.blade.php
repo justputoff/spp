@@ -6,19 +6,20 @@
 
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">
-    <h5 class="card-header">Tambah Master Nominal</h5>
-    <form action="{{ route('spp/student.store') }}" method="POST" class="p-3" enctype="multipart/form-data">
+    <h5 class="card-header">Edit Master Nominal</h5>
+    <form action="{{ route('spp/student.update', $feeStudent->id) }}" method="POST" class="p-3" enctype="multipart/form-data">
       @csrf
+      @method('PUT')
       <div class="row mb-3">
         <label class="col-sm-2 col-form-label" for="basic-default-name">Label</label>
         <div class="col-sm-10">
-          <input type="text" name="name" class="form-control" id="basic-default-name" placeholder="" />
+          <input type="text" name="name" class="form-control" id="basic-default-name" placeholder="" value="{{ $feeStudent->name }}" />
         </div>
       </div>
       <div class="row mb-3">
         <label class="col-sm-2 col-form-label" for="basic-default-name">Tarif Master Nominal</label>
         <div class="col-sm-10">
-          <input type="number" name="price" class="form-control" id="basic-default-name" placeholder="" />
+          <input type="number" name="price" class="form-control" id="basic-default-name" placeholder="" value="{{ $feeStudent->price }}" />
         </div>
       </div>
       <div class="row justify-content-end">

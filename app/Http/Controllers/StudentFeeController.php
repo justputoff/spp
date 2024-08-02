@@ -59,7 +59,12 @@ class StudentFeeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $studentFee = StudentFee::find($id);
+        $data = StudentFee::all();
+        return view('masterSpp.edit',[
+            'feeStudent' => $studentFee,
+            'data' => $data
+        ]);
     }
 
     /**
@@ -67,7 +72,14 @@ class StudentFeeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required'
+        ]);
+
+        $data = $request->only('name', 'price');
+        StudentFee::find($id)->update($data);
+        return redirect()->route('spp/student.index')->with('success', 'SUKSES');
     }
 
     /**
@@ -75,7 +87,12 @@ class StudentFeeController extends Controller
      */
     public function destroy(string $id)
     {
-        StudentFee::find($id)->delete();
-        return redirect()->route('spp/student.index')->with('success', 'SUKSES');
+        $studentFee = StudentFee::find($id);
+        if($studentFee->students->count() > 0){
+            return redirect()->route('spp/student.index')->with('error', 'GAGAL');
+        } else {
+            $studentFee->delete();
+            return redirect()->route('spp/student.index')->with('success', 'SUKSES');
+        }
     }
 }

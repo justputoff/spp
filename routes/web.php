@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::post('parent/store', [ParentController::class, 'store'])->name('parent.store');
     Route::put('parent/update/{id}', [ParentController::class, 'update'])->name('parent.update');
     Route::delete('parent/destroy/{id}', [ParentController::class, 'destroy'])->name('parent.destroy');
+    Route::get('parent/show/{id}', [ParentController::class, 'show'])->name('parent.show');
     //TA Siswa
     Route::get('ta/index', [TaController::class, 'index'])->name('ta.index');
     Route::get('ta/edit/{id}', [TaController::class, 'edit'])->name('ta.edit');
@@ -74,7 +75,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('spp/destroy/{id}', [SppController::class, 'destroy'])->name('spp.destroy');
     //MASTER SPP
     Route::get('spp/student/index', [StudentFeeController::class, 'index'])->name('spp/student.index');
+    Route::get('spp/student/edit/{id}', [StudentFeeController::class, 'edit'])->name('spp/student.edit');
     Route::post('spp/student/store', [StudentFeeController::class, 'store'])->name('spp/student.store');
+    Route::put('spp/student/update/{id}', [StudentFeeController::class, 'update'])->name('spp/student.update');
     Route::delete('spp/student/destroy/{id}', [StudentFeeController::class, 'destroy'])->name('spp/student.destroy');
     //Transaction
     Route::get('transaction/index', [TransactionController::class, 'index'])->name('transaction.index');

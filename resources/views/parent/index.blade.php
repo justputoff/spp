@@ -25,6 +25,7 @@
             <td>{{ $item->phone }}</td>
             <td>
               <a href="{{ route('parent.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+              <a href="{{ route('parent.show', $item->id) }}" class="btn btn-sm btn-info">Detail</a>
               <form action="{{ route('parent.destroy', $item->id) }}" method="post" style="display:inline-block;">
                 @csrf
                 @method('delete')

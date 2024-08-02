@@ -46,7 +46,10 @@ class ParentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $item = StudentParent::find($id);
+        return view('parent.show', [
+            'item' => $item
+        ]);
     }
 
     /**

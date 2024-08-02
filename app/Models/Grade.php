@@ -10,5 +10,10 @@ class Grade extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'teacher_id'    
     ];
+
+    public function teacher(){
+        return $this->belongsTo(Teacher::class);
+    }
 }

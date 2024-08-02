@@ -15,6 +15,21 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        $teachers = [
+            'teacher1',
+            'teacher2',
+            'teacher3',
+            'teacher4',
+            'teacher5',
+            'teacher6',
+            'teacher7',
+            'teacher8',
+            'teacher9',
+            'teacher10',
+            'teacher11',
+            'teacher12',
+        ];
+
         DB::table('users')->insert([
             [
                 'name' => 'admin',
@@ -23,5 +38,14 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password'),
             ],
         ]);
+
+        foreach ($teachers as $teacher) {
+            DB::table('users')->insert([
+                'name' => $teacher,
+                'email' => $teacher.'@example.com',
+                'role' => 'TEACHER',
+                'password' => Hash::make('password'),
+            ]);
+        }
     }
 }
