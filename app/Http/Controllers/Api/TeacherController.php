@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class TeacherController extends Controller
 {
     public function index(){
-        $teachers = Teacher::with(['user', 'grade'])->get();
+        $teachers = Teacher::all();
         return response()->json([
             'data' => $teachers,
             'meta' => [
