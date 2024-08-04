@@ -6,6 +6,10 @@
                 <span class="app-brand-logo demo">
                   <img src="{{ asset('logo-yayasan.png') }}" style="max-width: 60px" alt="">
                 </span>
+                <span class="demo menu-text fw-bolder ms-2 mt-3" style="font-size: 17px">
+                  <span class="fw-bolder">SIMKU-YTPSM</span>
+                  <p class="text-muted" style="font-size: 9px">Sistem Informasi Manajemen Keuangan Yayasan pendidikan surau minang</p>
+                </span>
               </a>
   
               <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
